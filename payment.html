@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国际收款指南 · 跨境电商从零开始</title>
+<style>
+  :root {
+    --bg: #f5f6fa;
+    --card: #ffffff;
+    --text: #1a1a2e;
+    --text-secondary: #6b7280;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --border: #e5e7eb;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-hover: 0 4px 16px rgba(0,0,0,0.12);
+    --radius: 12px;
+    --highlight-bg: #eff6ff;
+    --highlight-border: #bfdbfe;
+    --table-stripe: #f9fafb;
+    --badge-gold: #fbbf24;
+    --badge-silver: #c0c0c0;
+    --badge-bronze: #cd7f32;
+    --badge-global: #3b82f6;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --accent: #3b82f6;
+      --accent-hover: #60a5fa;
+      --border: #334155;
+      --shadow: 0 1px 3px rgba(0,0,0,0.3);
+      --shadow-hover: 0 4px 16px rgba(0,0,0,0.5);
+      --highlight-bg: #1e3a5f;
+      --highlight-border: #3b82f6;
+      --table-stripe: #1a2332;
+      --badge-gold: #f59e0b;
+      --badge-silver: #9ca3af;
+      --badge-bronze: #d97706;
+      --badge-global: #60a5fa;
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px 48px;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 15px;
+    margin-bottom: 20px;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--accent-hover); }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .page-header h1 {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .page-header .subtitle {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin-top: 6px;
+  }
+
+  /* ── Table ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .card-header {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+    font-size: 17px;
+  }
+  .card-body { padding: 16px 20px; }
+
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 640px;
+  }
+  thead th {
+    background: var(--table-stripe);
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+    color: var(--text);
+  }
+  tbody td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody tr:nth-child(even) td { background: var(--table-stripe); }
+  tbody tr:hover td { background: var(--highlight-bg); }
+
+  .platform-name {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .platform-sub {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  /* ── Analysis ── */
+  .analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .analysis-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s;
+  }
+  .analysis-card:hover { box-shadow: var(--shadow-hover); }
+  .analysis-card .badge {
+    display: inline-block;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .badge.gold   { background: var(--badge-gold); color: #1a1a2e; }
+  .badge.silver { background: var(--badge-silver); color: #1a1a2e; }
+  .badge.bronze { background: var(--badge-bronze); color: #fff; }
+  .badge.global { background: var(--badge-global); color: #fff; }
+
+  .analysis-card h4 {
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  .analysis-card p {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+  }
+
+  /* ── Choose ── */
+  .choose-list {
+    list-style: none;
+    padding: 0;
+  }
+  .choose-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14.5px;
+  }
+  .choose-list li:last-child { border-bottom: none; }
+  .choose-list .icon {
+    flex-shrink: 0;
+    width: 20px;
+    text-align: center;
+    color: var(--accent);
+  }
+
+  /* ── Highlight Box ── */
+  .highlight-box {
+    background: var(--highlight-bg);
+    border: 1px solid var(--highlight-border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    font-size: 14.5px;
+    line-height: 1.8;
+  }
+  .highlight-box h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .container { padding: 16px 12px 32px; }
+    .card-header { padding: 14px 16px; font-size: 15px; }
+    .card-body { padding: 12px 14px; }
+    .analysis-grid { grid-template-columns: 1fr; gap: 12px; }
+    .highlight-box { padding: 16px 18px; }
+    table { font-size: 12.5px; min-width: 540px; }
+    thead th, tbody td { padding: 10px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <a href="/" class="back-link">← 返回首页</a>
+
+  <header class="page-header">
+    <h1>国际收款指南</h1>
+    <p class="subtitle">跨境电商从零开始</p>
+  </header>
+
+  <!-- ── 四大收款平台对比表 ── -->
+  <section class="card">
+    <div class="card-header">四大收款平台对比表</div>
+    <div class="card-body table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>平台</th>
+            <th>提现费率</th>
+            <th>到账时间</th>
+            <th>特点</th>
+            <th>适合谁</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="platform-name">WorldFirst<span class="platform-sub">（万里汇）</span></span></td>
+            <td>0.3%封顶</td>
+            <td>T+0~T+1</td>
+            <td>费率最低，0汇损，蚂蚁集团旗下</td>
+            <td>费率敏感型</td>
+          </tr>
+          <tr>
+            <td><span class="platform-name">连连支付</span></td>
+            <td>0.7%封顶</td>
+            <td>T+0当天到账</td>
+            <td>到账最快，50+牌照</td>
+            <td>中小卖家</td>
+          </tr>
+          <tr>
+            <td><span class="platform-name">PingPong</span></td>
+            <td>1%封顶</td>
+            <td>T+0~T+2</td>
+            <td>无隐藏费用，增值服务多</td>
+            <td>中大型卖家</td>
+          </tr>
+          <tr>
+            <td><span class="platform-name">Payoneer<span class="platform-sub">（派安盈）</span></span></td>
+            <td>1.2%</td>
+            <td>T+1~T+3</td>
+            <td>亚马逊官方推荐，覆盖最广</td>
+            <td>多平台大卖家</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── 关键分析 ── -->
+  <section class="analysis-grid">
+    <div class="analysis-card">
+      <div class="badge gold">🥇</div>
+      <h4>费率最低</h4>
+      <p>WorldFirst万里汇 — 0.3%封顶，远低于其他三家，大客户可0费率</p>
+    </div>
+    <div class="analysis-card">
+      <div class="badge silver">🥈</div>
+      <h4>性价比之选</h4>
+      <p>连连支付 — 新客最低可至0.25%，到账速度最快</p>
+    </div>
+    <div class="analysis-card">
+      <div class="badge bronze">🥉</div>
+      <h4>本土化服务</h4>
+      <p>PingPong — 支持贷款、VAT缴纳等增值服务</p>
+    </div>
+    <div class="analysis-card">
+      <div class="badge global">🌐</div>
+      <h4>国际覆盖最广</h4>
+      <p>Payoneer — 支持平台和币种最全，但12个月收款&lt;$2,000收$29.95年费</p>
+    </div>
+  </section>
+
+  <!-- ── 选择建议 ── -->
+  <section class="card">
+    <div class="card-header">选择建议</div>
+    <div class="card-body">
+      <ul class="choose-list">
+        <li><span class="icon">🆕</span> <span><strong>新手 / 小额卖家</strong> → 连连支付 或 WorldFirst（费率低、操作简单）</span></li>
+        <li><span class="icon">📈</span> <span><strong>中大型卖家</strong> → WorldFirst 或 PingPong（大客户费率优惠）</span></li>
+        <li><span class="icon">🌍</span> <span><strong>多平台 / 多站点</strong> → Payoneer（覆盖面最广）</span></li>
+        <li><span class="icon">💰</span> <span><strong>费率敏感型</strong> → WorldFirst（0.3%封顶）</span></li>
+        <li><span class="icon">⚡</span> <span><strong>到账速度优先</strong> → 连连支付（T+0当天到账）</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── 省钱技巧 ── -->
+  <div class="highlight-box">
+    <h3>💡 省钱技巧</h3>
+    <p>新手推荐 <strong>WorldFirst</strong> 或 <strong>连连支付</strong>，费率低、操作简单。注意 <strong>Payoneer</strong> 12个月收款低于$2,000会收$29.95年费，小额卖家慎选。大卖家可联系客户经理申请阶梯费率。</p>
+  </div>
+
+</div>
+
+</body>
+</html>
