@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>平台选择指南 · 跨境电商从零开始</title>
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --text: #2d3436;
+    --text-secondary: #636e72;
+    --accent: #0984e3;
+    --accent-hover: #0767b3;
+    --border: #e0e0e0;
+    --tag-bg: #e8f4fd;
+    --tag-text: #0984e3;
+    --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+    --shadow-hover: 0 8px 30px rgba(0,0,0,.08);
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f0f1a;
+      --card: #1a1a2e;
+      --text: #e0e0e0;
+      --text-secondary: #a0a0a0;
+      --accent: #74b9ff;
+      --accent-hover: #a0d0ff;
+      --border: #2d2d44;
+      --tag-bg: #1e3050;
+      --tag-text: #74b9ff;
+      --shadow: 0 1px 3px rgba(0,0,0,.4);
+      --shadow-hover: 0 8px 30px rgba(0,0,0,.5);
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+  }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 1.2rem 3rem; }
+
+  /* Back link */
+  .back-link {
+    display: inline-block; padding: 0.6rem 0; margin-top: 1rem;
+    color: var(--accent); text-decoration: none; font-size: 0.92rem; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--accent-hover); }
+
+  /* Header */
+  header {
+    text-align: center; padding: 2rem 1rem 1.5rem;
+  }
+  header h1 {
+    font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; margin-bottom: 0.4rem; line-height: 1.3;
+  }
+  header .sub {
+    color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.6rem;
+  }
+
+  /* Section title */
+  .section-title {
+    font-size: 1.15rem; font-weight: 700; margin: 2rem 0 1rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .section-title .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0;
+  }
+
+  /* Card grid */
+  .card-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;
+  }
+  .card {
+    background: var(--card); border-radius: var(--radius); padding: 1.3rem;
+    box-shadow: var(--shadow); border: 1px solid var(--border);
+    transition: box-shadow 0.25s, transform 0.25s;
+  }
+  .card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+  .card h3 { font-size: 1rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem; }
+  .card p, .card li { font-size: 0.88rem; color: var(--text-secondary); }
+  .card ul { padding-left: 1.2rem; margin-top: 0.4rem; }
+  .card li { margin-bottom: 0.25rem; }
+  .card strong { color: var(--text); }
+
+  /* Table */
+  .table-wrap { overflow-x: auto; margin-top: 0.5rem; }
+  table {
+    width: 100%; border-collapse: collapse; font-size: 0.85rem; background: var(--card);
+    border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+  }
+  th, td { padding: 0.7rem 0.8rem; text-align: left; border-bottom: 1px solid var(--border); }
+  th {
+    background: var(--tag-bg); font-weight: 700; white-space: nowrap; color: var(--accent);
+    font-size: 0.8rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    th { background: #1e3050; }
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--tag-bg); }
+
+  /* Highlight box */
+  .highlight {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d4e6f1 100%);
+    border-left: 4px solid var(--accent); padding: 1.2rem 1.5rem;
+    border-radius: 0 var(--radius) var(--radius) 0; margin: 1.2rem 0; font-size: 0.92rem;
+    line-height: 1.7;
+  }
+  @media (prefers-color-scheme: dark) {
+    .highlight { background: linear-gradient(135deg, #1e3a5f 0%, #162447 100%); }
+  }
+  .highlight strong { color: var(--accent); }
+
+  /* Strategy box - special highlighted card */
+  .strategy-box {
+    background: var(--card); border: 2px solid var(--accent); border-radius: var(--radius);
+    padding: 1.5rem; margin: 1.5rem 0; box-shadow: var(--shadow-hover);
+  }
+  .strategy-box .icon { font-size: 1.4rem; }
+  .strategy-box p { font-size: 0.95rem; line-height: 1.8; margin-top: 0.5rem; color: var(--text); }
+
+  /* Trend list */
+  .trend-list {
+    list-style: none; display: flex; flex-direction: column; gap: 0.7rem;
+  }
+  .trend-list li {
+    background: var(--card); border-radius: var(--radius); padding: 1rem 1.2rem;
+    box-shadow: var(--shadow); border: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.9rem;
+    transition: box-shadow 0.25s;
+  }
+  .trend-list li:hover { box-shadow: var(--shadow-hover); }
+  .trend-list .num {
+    background: var(--accent); color: #fff; width: 24px; height: 24px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 0.75rem;
+    font-weight: 700; flex-shrink: 0;
+  }
+
+  /* Quick-match list */
+  .match-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.8rem;
+  }
+  .match-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    background: var(--card); border-radius: 10px; padding: 0.75rem 1rem;
+    box-shadow: var(--shadow); border: 1px solid var(--border);
+    transition: all 0.2s; font-size: 0.88rem;
+  }
+  .match-item:hover { border-color: var(--accent); box-shadow: var(--shadow-hover); }
+  .match-item .arrow-icon { color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+  /* Footer */
+  footer {
+    text-align: center; padding: 2rem 1rem; color: var(--text-secondary); font-size: 0.82rem;
+    border-top: 1px solid var(--border); margin-top: 2rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .card-grid, .match-grid { grid-template-columns: 1fr; }
+    header { padding: 1.5rem 0.5rem 1rem; }
+    header h1 { font-size: 1.4rem; }
+    th, td { padding: 0.5rem 0.6rem; font-size: 0.78rem; }
+    .strategy-box { padding: 1rem; }
+    .strategy-box p { font-size: 0.85rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <a href="index.html" class="back-link">← 返回首页</a>
+
+  <header>
+    <h1>🏪 平台选择指南</h1>
+    <p class="sub">8大跨境电商平台横向对比，帮你找到最适合的起点</p>
+  </header>
+
+  <!-- ====== 平台对比表格 ====== -->
+  <h2 class="section-title"><span class="dot"></span> 平台对比一览</h2>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>平台</th>
+        <th>核心市场</th>
+        <th>启动资金</th>
+        <th>佣金</th>
+        <th>适合谁</th>
+        <th>一句话总结</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Amazon</strong></td>
+        <td>北美、欧洲、日本</td>
+        <td>20-50万</td>
+        <td>8%-15%</td>
+        <td>品牌化卖家</td>
+        <td>想做品牌溢价的唯一选择</td>
+      </tr>
+      <tr>
+        <td><strong>Shopee</strong></td>
+        <td>东南亚、巴西</td>
+        <td>2-3万</td>
+        <td>2%-6%</td>
+        <td>新手入门</td>
+        <td>门槛最低，新手试水首选</td>
+      </tr>
+      <tr>
+        <td><strong>TikTok Shop</strong></td>
+        <td>美国、东南亚</td>
+        <td>5-10万</td>
+        <td>2%-8%</td>
+        <td>内容卖家</td>
+        <td>一条爆款视频改变命运</td>
+      </tr>
+      <tr>
+        <td><strong>Temu</strong></td>
+        <td>北美、欧洲</td>
+        <td>2-3万</td>
+        <td>0（全托管）</td>
+        <td>工厂型卖家</td>
+        <td>起量极快但利润极薄</td>
+      </tr>
+      <tr>
+        <td><strong>速卖通</strong></td>
+        <td>全球</td>
+        <td>3-5万</td>
+        <td>5%-8%</td>
+        <td>中小卖家</td>
+        <td>阿里系，中文操作友好</td>
+      </tr>
+      <tr>
+        <td><strong>美客多</strong></td>
+        <td>拉美18国</td>
+        <td>5-10万</td>
+        <td>11%-17%</td>
+        <td>拉美市场</td>
+        <td>拉美电商绝对霸主</td>
+      </tr>
+      <tr>
+        <td><strong>eBay</strong></td>
+        <td>北美、欧洲</td>
+        <td>1-3万</td>
+        <td>10%-12%</td>
+        <td>汽配/二手</td>
+        <td>拍卖模式独特</td>
+      </tr>
+      <tr>
+        <td><strong>Ozon</strong></td>
+        <td>俄罗斯</td>
+        <td>2-5万</td>
+        <td>5%-15%</td>
+        <td>俄语市场</td>
+        <td>俄版亚马逊</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- ====== 按卖家类型速配 ====== -->
+  <h2 class="section-title"><span class="dot"></span> 按卖家类型速配</h2>
+  <div class="match-grid">
+    <div class="match-item">
+      <span class="arrow-icon">→</span>
+      <span><strong>零经验工厂供货</strong> · Temu全托管</span>
+    </div>
+    <div class="match-item">
+      <span class="arrow-icon">→</span>
+      <span><strong>有美国仓的工厂</strong> · Temu半托管</span>
+    </div>
+    <div class="match-item">
+      <span class="arrow-icon">→</span>
+      <span><strong>擅长短视频/直播</strong> · TikTok Shop</span>
+    </div>
+    <div class="match-item">
+      <span class="arrow-icon">→</span>
+      <span><strong>品牌化/高客单</strong> · Amazon</span>
+    </div>
+    <div class="match-item">
+      <span class="arrow-icon">→</span>
+      <span><strong>东南亚入门</strong> · Shopee</span>
+    </div>
+    <div class="match-item">
+      <span class="arrow-icon">→</span>
+      <span><strong>服饰快反供应链</strong> · SHEIN</span>
+    </div>
+  </div>
+
+  <!-- ====== 按启动资金选 ====== -->
+  <h2 class="section-title"><span class="dot"></span> 按启动资金选</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3>💰 &lt; 3万</h3>
+      <p>Shopee 或 Temu 全托管 —— 门槛最低，适合低成本试水验证模式。</p>
+    </div>
+    <div class="card">
+      <h3>💰 3-10万</h3>
+      <p>Amazon 单站点 或 速卖通 —— 可开始尝试高客单价市场，单点突破。</p>
+    </div>
+    <div class="card">
+      <h3>💰 &gt; 10万</h3>
+      <p>Amazon 多站点 + FBA —— 多市场布局，用 FBA 物流建立竞争壁垒。</p>
+    </div>
+  </div>
+
+  <!-- ====== 按目标市场选 ====== -->
+  <h2 class="section-title"><span class="dot"></span> 按目标市场选</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3>🇺🇸🇪🇺 欧美高客单价</h3>
+      <ul>
+        <li><strong>Amazon</strong> — 品牌化首选，Prime会员高转化</li>
+        <li><strong>Walmart</strong> — 美国第二大电商，审核严格</li>
+        <li><strong>eBay</strong> — 拍卖+固定价，适合特定品类</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🌏 东南亚高增速</h3>
+      <ul>
+        <li><strong>Shopee</strong> — 东南亚电商第一名</li>
+        <li><strong>Lazada</strong> — 阿里系，物流体系成熟</li>
+        <li><strong>TikTok Shop</strong> — 内容驱动，爆发力强</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🌎 拉美蓝海</h3>
+      <ul>
+        <li><strong>美客多</strong> — 拉美18国全覆盖，绝对霸主</li>
+        <li><strong>Shopee巴西</strong> — 增长迅猛，门槛低</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🕌 中东有钱市场</h3>
+      <ul>
+        <li><strong>Noon</strong> — 中东本土电商巨头</li>
+        <li><strong>Amazon.ae</strong> — 亚马逊中东站</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🇯🇵🇰🇷 日韩高忠诚度</h3>
+      <ul>
+        <li><strong>Rakuten</strong> — 日本本土电商霸主</li>
+        <li><strong>Coupang</strong> — 韩国"火箭配送"体验</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🇷🇺 俄罗斯/东欧</h3>
+      <ul>
+        <li><strong>Ozon</strong> — 俄版亚马逊，增长快</li>
+        <li><strong>Wildberries</strong> — 俄罗斯最大电商平台</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ====== 核心趋势 ====== -->
+  <h2 class="section-title"><span class="dot"></span> 核心趋势（2025-2026）</h2>
+  <ul class="trend-list">
+    <li>
+      <span class="num">1</span>
+      <span><strong>社交电商崛起：</strong>TikTok Shop 2025年美国GMV预计达158亿美元，内容驱动购物成为新增长极。</span>
+    </li>
+    <li>
+      <span class="num">2</span>
+      <span><strong>全托管模式普及：</strong>工厂型卖家可零运营门槛出海，平台包揽定价、物流、售后，卖家只需供货。</span>
+    </li>
+    <li>
+      <span class="num">3</span>
+      <span><strong>合规成本上升：</strong>欧盟PPWR（包装与包装废弃物法规）、GPSR（通用产品安全法规）等新规，对环保和产品安全提出更高要求。</span>
+    </li>
+    <li>
+      <span class="num">4</span>
+      <span><strong>本地化履约成标配：</strong>海外仓 / FBA 成为主流，小包直邮免税红利终结，消费者对时效要求越来越高。</span>
+    </li>
+    <li>
+      <span class="num">5</span>
+      <span><strong>AI赋能：</strong>近70%电商企业预计2026年部署AI工具，涵盖选品、Listing优化、客服、广告投放等全链路。</span>
+    </li>
+  </ul>
+
+  <!-- ====== 新手建议 ====== -->
+  <h2 class="section-title"><span class="dot"></span> 新手建议</h2>
+  <div class="highlight">
+    <strong>🎯 先聚焦一个平台、一个市场，不要同时铺开。</strong><br>
+    平台是通道，你是水。通道再宽，水不够也流不远。
+  </div>
+
+  <!-- ====== 务实组合策略 ====== -->
+  <div class="strategy-box">
+    <span class="icon">💡</span> <strong style="font-size:1rem;color:var(--accent);">务实组合策略</strong>
+    <p>
+      <strong>第一步</strong>用 Temu/Shopee 测试产品与供应链（低成本验证）→
+      <strong>第二步</strong>同步 Amazon FBM 上架（验证高客单价接受度）→
+      <strong>第三步</strong>转 Amazon FBA + 品牌备案（规模化放量）→
+      <strong>第四步</strong>布局 TikTok Shop 做内容引流（打开新增长曲线）
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  <p>📅 数据更新于 2026年6月 · 信息采集自公开权威来源</p>
+  <p>本页面仅供学习参考 · <a href="index.html">← 返回首页</a> · <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ 回到顶部</a></p>
+</footer>
+
+</body>
+</html>
