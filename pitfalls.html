@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>避坑指南 · 跨境电商从零开始</title>
+<style>
+  :root {
+    --bg: #f8f9fa; --card: #ffffff; --text: #2d3436; --text-secondary: #636e72;
+    --accent: #0984e3; --danger: #d63031; --border: #e0e0e0; --tag-bg: #e8f4fd;
+    --shadow: 0 1px 3px rgba(0,0,0,.05); --shadow-hover: 0 6px 24px rgba(0,0,0,.08); --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f0f1a; --card: #1a1a2e; --text: #e0e0e0; --text-secondary: #a0a0a0;
+      --accent: #74b9ff; --border: #2d2d44; --tag-bg: #1e3050;
+      --shadow: 0 1px 3px rgba(0,0,0,.4); --shadow-hover: 0 6px 24px rgba(0,0,0,.5);
+    }
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:16px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height:1.7; }
+  .container { max-width:860px; margin:0 auto; padding:0 1.2rem 2rem; }
+  .back-link { display:inline-block; margin-top:1.2rem; color:var(--accent); text-decoration:none; font-size:.9rem; }
+  .back-link:hover { text-decoration:underline; }
+  header { padding:1.5rem 0 .8rem; }
+  header h1 { font-size:1.6rem; font-weight:800; }
+  header .sub { color:var(--text-secondary); font-size:.9rem; margin-top:.2rem; }
+
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1rem; margin:1rem 0; }
+  .card { background:var(--card); border-radius:var(--radius); padding:1.3rem; box-shadow:var(--shadow); border:1px solid var(--border); transition:all .25s; }
+  .card:hover { box-shadow:var(--shadow-hover); transform:translateY(-1px); }
+  .card h3 { font-size:1.05rem; margin-bottom:.5rem; display:flex; align-items:center; gap:.4rem; }
+  .card .emoji { font-size:1.3rem; }
+  .card p { font-size:.88rem; color:var(--text-secondary); }
+
+  .highlight { background:linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%); border-left:4px solid var(--danger); padding:1.2rem 1.5rem; border-radius:0 var(--radius) var(--radius) 0; margin:1.2rem 0; font-size:.92rem; }
+  @media (prefers-color-scheme: dark) { .highlight { background:linear-gradient(135deg, #3d1a1a 0%, #2d1010 100%); } }
+  .highlight strong { color:var(--danger); }
+
+  .tip-list { list-style:none; padding:0; }
+  .tip-list li { padding:.5rem .8rem; margin:.3rem 0; background:var(--card); border-radius:8px; font-size:.85rem; color:var(--text-secondary); border:1px solid var(--border); }
+  .tip-list li::before { content:"⚠️ "; }
+
+  @media (max-width:600px) { .card-grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← 返回首页</a>
+  <header>
+    <h1>⚠️ 避坑指南</h1>
+    <p class="sub">跨境电商从零开始 · 这些雷千万别踩</p>
+  </header>
+
+  <h2 style="font-size:1.1rem;margin:1.2rem 0 .7rem;">💣 6大常见致命雷区</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3><span class="emoji">💣</span> 盲目跟风爆品</h3>
+      <p>看到别人卖什么火就跟什么，结果竞争激烈、利润被卷没。<strong>做差异化，找细分蓝海。</strong></p>
+    </div>
+    <div class="card">
+      <h3><span class="emoji">💣</span> 忽视物流成本</h3>
+      <p>产品定价时只算进货成本，不算物流。大件货物流费可能比产品本身还贵。<strong>定价前先核算全链路。</strong></p>
+    </div>
+    <div class="card">
+      <h3><span class="emoji">💣</span> 知识产权侵权</h3>
+      <p>2025年亚马逊因合规封号1.2万家中国卖家，冻结超200亿元。<strong>选品前务必排查专利/商标。</strong></p>
+    </div>
+    <div class="card">
+      <h3><span class="emoji">💣</span> 忽视税务合规</h3>
+      <p>欧洲VAT、日本JCT……不注册就不让卖。<strong>目标市场税务义务务必提前了解。</strong></p>
+    </div>
+    <div class="card">
+      <h3><span class="emoji">💣</span> 资金链断裂</h3>
+      <p>一次性备货太多，货款压住，广告费又烧完了。<strong>小批量测试，验证后再放大。</strong></p>
+    </div>
+    <div class="card">
+      <h3><span class="emoji">💣</span> 账号关联被封</h3>
+      <p>在同一台电脑/同一网络登录多个店铺被关联封号。<strong>使用指纹浏览器或独立IP环境。</strong></p>
+    </div>
+  </div>
+
+  <h2 style="font-size:1.1rem;margin:1.5rem 0 .7rem;">🔍 更多隐形陷阱</h2>
+  <ul class="tip-list">
+    <li><strong>不注册品牌商标</strong> → 被跟卖、被投诉、listing被篡改</li>
+    <li><strong>过度依赖单一平台</strong> → 82%大卖家已多平台布局</li>
+    <li><strong>忽视汇率波动</strong> → 利润被汇率吃掉，及时提现锁汇</li>
+    <li><strong>虚假宣传/刷单</strong> → 平台严查，轻则降权重则封号</li>
+    <li><strong>把全托管当甩手掌柜</strong> → 质量评分低会被罚款</li>
+    <li><strong>不做数据复盘</strong> → 不知道哪些赚钱哪些在亏</li>
+  </ul>
+
+  <div class="highlight">
+    <strong>💡 核心原则：慢即是快，稳才能远。</strong><br>
+    先验证产品和模式的可行性，再逐步扩大投入。跨境电商是马拉松，不是百米冲刺。合规是生死线——不合规 = 零流量 + 资金冻结。
+  </div>
+</div>
+</body>
+</html>
