@@ -3,566 +3,291 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>跨境电商从零开始 · 普通人入门完全指南</title>
+<title>跨境电商从零开始 · 导航</title>
 <style>
   :root {
-    --bg: #f8f9fa;
-    --card: #ffffff;
-    --text: #2d3436;
-    --text-secondary: #636e72;
-    --accent: #0984e3;
-    --accent-light: #dfe6e9;
-    --border: #e0e0e0;
-    --tag-bg: #e8f4fd;
-    --tag-text: #0984e3;
-    --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
-    --shadow-hover: 0 8px 30px rgba(0,0,0,.08);
-    --radius: 12px;
+    --bg: #f8f9fa; --card: #ffffff; --text: #2d3436; --text-secondary: #636e72;
+    --accent: #0984e3; --accent-hover: #0767b3; --border: #e0e0e0;
+    --tag-bg: #e8f4fd; --tag-text: #0984e3;
+    --shadow: 0 1px 3px rgba(0,0,0,.05);
+    --shadow-hover: 0 6px 24px rgba(0,0,0,.08);
+    --radius: 14px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #1a1a2e;
-      --card: #16213e;
-      --text: #e0e0e0;
-      --text-secondary: #a0a0a0;
-      --accent: #74b9ff;
-      --accent-light: #2d3436;
-      --border: #2d3436;
-      --tag-bg: #1e3a5f;
-      --tag-text: #74b9ff;
-      --shadow: 0 1px 3px rgba(0,0,0,.3);
-      --shadow-hover: 0 8px 30px rgba(0,0,0,.4);
+      --bg: #0f0f1a; --card: #1a1a2e; --text: #e0e0e0; --text-secondary: #a0a0a0;
+      --accent: #74b9ff; --border: #2d2d44;
+      --tag-bg: #1e3050; --tag-text: #74b9ff;
+      --shadow: 0 1px 3px rgba(0,0,0,.4); --shadow-hover: 0 6px 24px rgba(0,0,0,.5);
     }
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; font-size:16px; }
+  html { font-size:16px; scroll-behavior:smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-    background: var(--bg); color: var(--text); line-height:1.7;
+    background: var(--bg); color: var(--text); line-height:1.6; min-height:100vh;
   }
-  /* Nav */
-  .nav {
-    position:sticky; top:0; z-index:100;
-    background: var(--card); border-bottom:1px solid var(--border);
-    backdrop-filter:blur(10px); padding:0 1rem;
-    display:flex; align-items:center; justify-content:space-between; height:56px;
+  .container { max-width:1000px; margin:0 auto; padding:0 1.2rem; }
+
+  header {
+    text-align:center; padding:2.5rem 1rem 1.5rem;
   }
-  .nav .logo { font-weight:700; font-size:1.05rem; color:var(--accent); }
-  .nav-links { display:flex; gap:1.5rem; list-style:none; }
-  .nav-links a { text-decoration:none; color:var(--text-secondary); font-size:.88rem; transition:color .2s; }
-  .nav-links a:hover { color:var(--accent); }
-  .nav-toggle { display:none; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text); }
-  @media (max-width:768px) {
-    .nav-links { display:none; position:absolute; top:56px; left:0; right:0; background:var(--card); flex-direction:column; padding:1rem; border-bottom:1px solid var(--border); gap:.8rem; }
-    .nav-links.open { display:flex; }
-    .nav-toggle { display:block; }
-  }
-  /* Hero */
-  .hero {
-    text-align:center; padding:3rem 1.5rem 2rem; max-width:720px; margin:0 auto;
-  }
-  .hero h1 { font-size:clamp(1.6rem, 4vw, 2.2rem); font-weight:800; margin-bottom:.6rem; line-height:1.3; }
-  .hero .sub { color:var(--text-secondary); font-size:1.05rem; margin-bottom:1rem; }
-  .hero .stats { display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
-  .hero .stat { background:var(--card); border-radius:var(--radius); padding:1rem 1.3rem; box-shadow:var(--shadow); min-width:100px; }
-  .hero .stat .num { font-size:1.5rem; font-weight:800; color:var(--accent); }
-  .hero .stat .label { font-size:.78rem; color:var(--text-secondary); }
-  /* Container */
-  .container { max-width:1100px; margin:0 auto; padding:0 1.5rem 3rem; }
-  /* Section Title */
+  header h1 { font-size:clamp(1.5rem, 4vw, 2rem); font-weight:800; margin-bottom:.4rem; }
+  header .sub { color:var(--text-secondary); font-size:.95rem; }
+  .stats-row { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.2rem; }
+  .stat-item { background:var(--card); border-radius:var(--radius); padding:.8rem 1rem; box-shadow:var(--shadow); text-align:center; min-width:80px; }
+  .stat-item .num { font-size:1.2rem; font-weight:800; color:var(--accent); }
+  .stat-item .label { font-size:.7rem; color:var(--text-secondary); }
+
   .section-title {
-    font-size:1.4rem; font-weight:700; margin:2.5rem 0 1.2rem;
-    padding-bottom:.5rem; border-bottom:2px solid var(--accent);
-    display:flex; align-items:center; gap:.5rem;
+    font-size:1.1rem; font-weight:700; margin:1.8rem 0 .8rem;
+    display:flex; align-items:center; gap:.4rem;
   }
-  .section-title .icon { font-size:1.5rem; }
-  /* Card Grid */
-  .card-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:1.2rem; }
-  .card {
-    background:var(--card); border-radius:var(--radius); padding:1.4rem;
-    box-shadow:var(--shadow); transition:box-shadow .25s, transform .25s;
-    border:1px solid var(--border);
+  .section-title .dot { width:8px; height:8px; border-radius:50%; background:var(--accent); }
+
+  /* Resource links */
+  .resource-grid {
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:.7rem;
   }
-  .card:hover { box-shadow:var(--shadow-hover); transform:translateY(-1px); }
-  .card h3 { font-size:1.05rem; margin-bottom:.5rem; display:flex; align-items:center; gap:.4rem; }
-  .card p, .card li { font-size:.9rem; color:var(--text-secondary); }
-  .card ul { padding-left:1.2rem; margin-top:.4rem; }
-  .card li { margin-bottom:.25rem; }
-  .tag {
-    display:inline-block; background:var(--tag-bg); color:var(--tag-text);
-    padding:.15rem .55rem; border-radius:20px; font-size:.75rem; font-weight:600; margin-right:.3rem;
+  .res-link {
+    display:flex; align-items:center; gap:.6rem; padding:.65rem .9rem;
+    background:var(--card); border-radius:10px; box-shadow:var(--shadow);
+    border:1px solid var(--border); text-decoration:none; color:var(--text);
+    transition:all .2s; font-size:.85rem;
   }
-  /* Full width card */
-  .card-full {
-    background:var(--card); border-radius:var(--radius); padding:1.5rem;
-    box-shadow:var(--shadow); border:1px solid var(--border); margin-bottom:1rem;
+  .res-link:hover { border-color:var(--accent); box-shadow:var(--shadow-hover); transform:translateY(-1px); }
+  .res-link .icon { font-size:1.2rem; flex-shrink:0; width:28px; text-align:center; }
+  .res-link .info { flex:1; min-width:0; }
+  .res-link .info strong { display:block; font-size:.82rem; color:var(--accent); }
+  .res-link .info span { font-size:.73rem; color:var(--text-secondary); }
+  .res-link .arrow { color:var(--text-secondary); font-size:.8rem; flex-shrink:0; }
+
+  .res-cat {
+    font-size:.78rem; font-weight:700; color:var(--text-secondary);
+    margin:1rem 0 .5rem; padding-bottom:.3rem; border-bottom:1px solid var(--border);
+    letter-spacing:.04em;
   }
-  .card-full h3 { margin-bottom:.8rem; }
-  /* Table */
-  .table-wrap { overflow-x:auto; margin-top:.8rem; }
-  table { width:100%; border-collapse:collapse; font-size:.85rem; }
-  th, td { padding:.6rem .75rem; text-align:left; border-bottom:1px solid var(--border); }
-  th { background:var(--accent-light); font-weight:600; white-space:nowrap; }
-  tr:hover td { background:var(--accent-light); }
-  /* Timeline */
-  .timeline { display:flex; flex-wrap:wrap; gap:.6rem; }
-  .timeline .step {
-    flex:1 1 100px; background:var(--card); border-radius:var(--radius); padding:1rem;
-    text-align:center; box-shadow:var(--shadow); border:1px solid var(--border);
-    min-width:100px;
+  .res-cat:first-child { margin-top:0; }
+
+  /* Nav cards */
+  .nav-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:.9rem; margin:1rem 0; }
+  .nav-card {
+    display:block; background:var(--card); border-radius:var(--radius); padding:1.3rem;
+    box-shadow:var(--shadow); border:1px solid var(--border); text-decoration:none; color:var(--text);
+    transition:all .25s; position:relative; overflow:hidden;
   }
-  .timeline .step .week { font-size:.7rem; color:var(--accent); font-weight:700; }
-  .timeline .step .task { font-size:.82rem; margin-top:.3rem; }
-  /* Link cards */
-  .link-card { display:flex; align-items:center; gap:.7rem; padding:.8rem 1rem; background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid var(--border); text-decoration:none; color:var(--text); transition:all .2s; }
-  .link-card:hover { border-color:var(--accent); box-shadow:var(--shadow-hover); }
-  .link-card .lc-icon { font-size:1.4rem; }
-  .link-card .lc-text { font-size:.85rem; }
-  .link-card .lc-text strong { display:block; color:var(--accent); }
-  /* Highlight box */
-  .highlight {
+  .nav-card:hover { box-shadow:var(--shadow-hover); transform:translateY(-2px); }
+  .nav-card .nc-icon { font-size:2rem; margin-bottom:.5rem; }
+  .nav-card h3 { font-size:1rem; margin-bottom:.3rem; }
+  .nav-card p { font-size:.8rem; color:var(--text-secondary); line-height:1.4; }
+  .nav-card .badge {
+    position:absolute; top:12px; right:12px;
+    font-size:.65rem; padding:.15rem .5rem; border-radius:20px; font-weight:600;
+  }
+  .badge-hot { background:#ffeaa7; color:#d63031; }
+  .badge-new { background:#dfe6e9; color:#2d3436; }
+  .badge-core { background:#e8f4fd; color:#0984e3; }
+
+  /* Quick start */
+  .quick-start {
     background:linear-gradient(135deg, #e8f4fd 0%, #d4e6f1 100%);
-    border-left:4px solid var(--accent); padding:1.2rem 1.5rem; border-radius:0 var(--radius) var(--radius) 0;
-    margin:1rem 0; font-size:.92rem;
+    border-radius:var(--radius); padding:1.2rem 1.5rem; margin:1rem 0;
   }
   @media (prefers-color-scheme: dark) {
-    .highlight { background:linear-gradient(135deg, #1e3a5f 0%, #162447 100%); }
+    .quick-start { background:linear-gradient(135deg, #1a3050 0%, #162440 100%); }
   }
-  .highlight strong { color:var(--accent); }
-  /* Footer */
-  footer { text-align:center; padding:2rem; color:var(--text-secondary); font-size:.82rem; border-top:1px solid var(--border); margin-top:2rem; }
+  .quick-start h3 { margin-bottom:.5rem; }
+  .quick-start ol { padding-left:1.2rem; font-size:.88rem; }
+  .quick-start ol li { margin-bottom:.25rem; }
+
+  footer { text-align:center; padding:2.5rem 1rem 2rem; color:var(--text-secondary); font-size:.8rem; }
   footer a { color:var(--accent); }
-  /* Responsive */
+
   @media (max-width:600px) {
-    .card-grid { grid-template-columns:1fr; }
-    .hero { padding:2rem 1rem 1.5rem; }
-    .hero h1 { font-size:1.4rem; }
-    .timeline { flex-direction:column; }
-    .timeline .step { flex:auto; }
+    .resource-grid, .nav-grid { grid-template-columns:1fr; }
+    header { padding:1.5rem 1rem 1rem; }
   }
-  /* Back to top */
-  .btt {
-    position:fixed; bottom:1.5rem; right:1.5rem; width:44px; height:44px; border-radius:50%;
-    background:var(--accent); color:#fff; border:none; cursor:pointer; font-size:1.2rem;
-    box-shadow:0 2px 12px rgba(0,0,0,.2); display:none; z-index:99;
-    transition:opacity .3s;
-  }
-  .btt.visible { display:block; }
-  /* Smooth fade */
-  .fade-in { animation:fadeIn .5s ease forwards; }
-  @keyframes fadeIn { from{opacity:0;transform:translateY(12px);} to{opacity:1;transform:translateY(0);} }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <span class="logo">🌍 跨境小白指南</span>
-  <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#what">是什么</a></li>
-    <li><a href="#steps">怎么做</a></li>
-    <li><a href="#platforms">平台</a></li>
-    <li><a href="#products">选品</a></li>
-    <li><a href="#logistics">物流</a></li>
-    <li><a href="#payment">收款</a></li>
-    <li><a href="#qualify">资质</a></li>
-    <li><a href="#cases">案例</a></li>
-    <li><a href="#resources">资源</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <h1>🌐 普通人从零开始的<br>跨境电商完全指南</h1>
-  <p class="sub">不需要外语精通 · 不需要大量资金 · 不需要技术团队<br>用一份详尽的路线图，帮你一步步了解这个行业</p>
-  <div class="stats">
-    <div class="stat"><div class="num">3.89万亿</div><div class="label">2026全球电商收入（美元）</div></div>
-    <div class="stat"><div class="num">72%</div><div class="label">移动端交易占比</div></div>
-    <div class="stat"><div class="num">2.83</div><div class="label">成熟卖家平均运营平台数</div></div>
-    <div class="stat"><div class="num">500元</div><div class="label">最低启动资金案例</div></div>
-  </div>
-</section>
-
 <div class="container">
 
-<!-- WHAT -->
-<h2 class="section-title" id="what"><span class="icon">📖</span> 一、跨境电商是什么？</h2>
-<div class="card-full">
-  <p>简单来说，<strong>跨境电商就是通过互联网把产品卖给国外的消费者</strong>。你在国内的电商平台（淘宝、拼多多）上卖货给中国人，跨境电商则是通过 Amazon、Shopee、TikTok Shop 等平台卖货给美国人、欧洲人、东南亚人。</p>
-  <br>
-  <p>为什么要做跨境电商？三个核心原因：</p>
-  <div class="card-grid" style="margin-top:.8rem;">
-    <div class="card"><h3>💰 利润空间大</h3><p>同样一件商品，国内售价 ÷ 汇率后放在海外市场，往往有 3-10 倍的价差空间。即使扣除物流和佣金，毛利仍可观。</p></div>
-    <div class="card"><h3>📈 市场在增长</h3><p>东南亚电商年增速超20%，TikTok Shop 美区 2025年GMV同比增长超300%。全球消费习惯正在向线上转移。</p></div>
-    <div class="card"><h3>🚪 门槛持续降低</h3><p>全托管模式、AI工具、一件代发，让"一人公司"成为可能。不需要懂外语、不需要仓库、不需要技术团队。</p></div>
+<header>
+  <h1>🌐 跨境电商从零开始</h1>
+  <p class="sub">一份为普通人准备的完全指南 · 所有你需要的链接都在这里</p>
+  <div class="stats-row">
+    <div class="stat-item"><div class="num">3.89万亿</div><div class="label">2026全球市场（美元）</div></div>
+    <div class="stat-item"><div class="num">8+</div><div class="label">主流平台可选</div></div>
+    <div class="stat-item"><div class="num">500元</div><div class="label">最低启动案例</div></div>
+    <div class="stat-item"><div class="num">72%</div><div class="label">移动端交易占比</div></div>
   </div>
+</header>
+
+<!-- Quick Start -->
+<div class="quick-start">
+  <h3>🚀 新手8周速通路线</h3>
+  <ol>
+    <li><strong>第1周</strong> → 确定目标市场 + 选1个平台</li>
+    <li><strong>第2-3周</strong> → 市场调研 + 数据选品</li>
+    <li><strong>第4周</strong> → 注册公司 + 准备入驻资料</li>
+    <li><strong>第5周</strong> → 开通国际收款账户</li>
+    <li><strong>第6周</strong> → 对接供应链 + 确定物流方案</li>
+    <li><strong>第7周</strong> → 上架产品 + Listing优化</li>
+    <li><strong>第8周起</strong> → 小预算广告测试 + 持续迭代</li>
+  </ol>
 </div>
 
-<!-- STEPS -->
-<h2 class="section-title" id="steps"><span class="icon">🗺️</span> 二、从零开始：8周入门路线图</h2>
-<div class="timeline">
-  <div class="step"><div class="week">第1周</div><div class="task">确定目标市场<br>和1个平台</div></div>
-  <div class="step"><div class="week">第2-3周</div><div class="task">市场调研<br>数据选品</div></div>
-  <div class="step"><div class="week">第4周</div><div class="task">注册公司<br>准备入驻资料</div></div>
-  <div class="step"><div class="week">第5周</div><div class="task">开通国际<br>收款账户</div></div>
-  <div class="step"><div class="week">第6周</div><div class="task">对接供应链<br>确定物流方案</div></div>
-  <div class="step"><div class="week">第7周</div><div class="task">上架产品<br>Listing优化</div></div>
-  <div class="step"><div class="week">第8周起</div><div class="task">小预算测试<br>持续优化迭代</div></div>
-</div>
-<div class="highlight" style="margin-top:1.2rem;">
-  <strong>💡 核心原则：慢即是快，稳才能远。</strong> 先验证产品和模式的可行性，再逐步扩大投入。不要一上来就砸几十万。
-</div>
+<!-- ====== 核心资源链接（放在最前面） ====== -->
+<h2 class="section-title"><span class="dot"></span> 核心资源链接</h2>
 
-<!-- PLATFORMS -->
-<h2 class="section-title" id="platforms"><span class="icon">🏪</span> 三、平台选择：找到最适合你的那个</h2>
-<div class="table-wrap">
-<table>
-  <thead>
-    <tr><th>平台</th><th>核心市场</th><th>启动资金</th><th>佣金</th><th>适合谁</th><th>一句话总结</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><strong>Amazon</strong></td><td>北美、欧洲、日本</td><td>20-50万</td><td>8%-15%</td><td>品牌化卖家</td><td>想做品牌溢价的唯一选择</td></tr>
-    <tr><td><strong>Shopee</strong></td><td>东南亚、巴西</td><td>2-3万</td><td>2%-6%</td><td>新手入门</td><td>门槛最低，新手试水首选</td></tr>
-    <tr><td><strong>TikTok Shop</strong></td><td>美国、东南亚</td><td>5-10万</td><td>2%-8%</td><td>有内容能力的卖家</td><td>一条爆款视频改变命运</td></tr>
-    <tr><td><strong>Temu</strong></td><td>北美、欧洲</td><td>2-3万</td><td>0（全托管）</td><td>工厂型卖家</td><td>起量极快但利润极薄</td></tr>
-    <tr><td><strong>速卖通</strong></td><td>全球</td><td>3-5万</td><td>5%-8%</td><td>中小卖家</td><td>阿里系，中文操作友好</td></tr>
-    <tr><td><strong>美客多</strong></td><td>拉美18国</td><td>5-10万</td><td>11%-17%</td><td>开拓拉美市场</td><td>拉美电商绝对霸主</td></tr>
-    <tr><td><strong>eBay</strong></td><td>北美、欧洲</td><td>1-3万</td><td>10%-12%</td><td>汽配/二手/个人</td><td>拍卖模式独特，适合特定品类</td></tr>
-    <tr><td><strong>Ozon</strong></td><td>俄罗斯</td><td>2-5万</td><td>5%-15%</td><td>俄语市场卖家</td><td>俄版亚马逊，增长快</td></tr>
-  </tbody>
-</table>
+<div class="res-cat">🏪 主流平台入驻入口</div>
+<div class="resource-grid">
+  <a href="https://gs.amazon.cn" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">📦</span><span class="info"><strong>Amazon 全球开店</strong><span>gs.amazon.cn — 全球最大电商平台</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://shopee.cn" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🛒</span><span class="info"><strong>Shopee 虾皮入驻</strong><span>shopee.cn — 东南亚首选，门槛最低</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://seller.tiktokglobalshop.com" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🎬</span><span class="info"><strong>TikTok Shop 卖家中心</strong><span>内容电商，流量红利最大</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://seller.kuajing.pinduoduo.com" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">⚡</span><span class="info"><strong>Temu 卖家中心</strong><span>拼多多出海，全托管零运营</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://sell.aliexpress.com" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🌍</span><span class="info"><strong>速卖通 AliExpress</strong><span>sell.aliexpress.com — 阿里系全球平台</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://www.ebay.cn" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🔨</span><span class="info"><strong>eBay 中国</strong><span>ebay.cn — 汽配/收藏品/二手品类</span></span><span class="arrow">↗</span>
+  </a>
 </div>
 
-<div class="highlight">
-  <strong>🎯 新手建议：先聚焦一个平台、一个市场，不要同时铺开。</strong><br>
-  · 资金 &lt; 3万 → Shopee或Temu全托管<br>
-  · 资金 3-10万 → Amazon单站点或速卖通<br>
-  · 擅长拍短视频 → TikTok Shop优先
+<div class="res-cat">🛠️ 选品与数据工具</div>
+<div class="resource-grid">
+  <a href="https://www.sellersprite.com" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🔍</span><span class="info"><strong>卖家精灵</strong><span>亚马逊选品+竞品分析+1688联动</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://www.junglescout.com" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">📊</span><span class="info"><strong>Jungle Scout</strong><span>市场数据雷达，产品数据库</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://www.helium10.com" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🎈</span><span class="info"><strong>Helium 10</strong><span>全流程工具套件</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://keepa.com" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">📉</span><span class="info"><strong>Keepa</strong><span>亚马逊历史价格+销量追踪</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://trends.google.com" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">📈</span><span class="info"><strong>Google Trends</strong><span>全球搜索趋势分析</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://www.fastmoss.com" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🎯</span><span class="info"><strong>FastMoss</strong><span>TikTok电商爆款数据</span></span><span class="arrow">↗</span>
+  </a>
 </div>
 
-<div class="card-grid" style="margin-top:1rem;">
-  <div class="card">
-    <h3>📊 按目标市场选</h3>
-    <ul>
-      <li><strong>欧美高客单价</strong> → Amazon、Walmart、eBay</li>
-      <li><strong>东南亚高增速</strong> → Shopee、Lazada、TikTok Shop</li>
-      <li><strong>拉美蓝海</strong> → 美客多、Shopee巴西</li>
-      <li><strong>中东有钱市场</strong> → Noon、Amazon.ae</li>
-      <li><strong>日韩高忠诚度</strong> → Rakuten、Coupang</li>
-      <li><strong>俄罗斯/东欧</strong> → Ozon、Wildberries</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h3>📦 按产品品类选</h3>
-    <ul>
-      <li><strong>品牌化产品</strong> → Amazon、Walmart</li>
-      <li><strong>低价快消</strong> → Temu、Shopee</li>
-      <li><strong>时尚/服装</strong> → SHEIN、TikTok Shop</li>
-      <li><strong>手工/定制</strong> → Etsy</li>
-      <li><strong>汽配/工业品</strong> → eBay</li>
-      <li><strong>3C电子</strong> → Newegg、美客多</li>
-    </ul>
-  </div>
+<div class="res-cat">🏭 货源与供应链</div>
+<div class="resource-grid">
+  <a href="https://www.1688.com" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🏭</span><span class="info"><strong>1688 阿里巴巴</strong><span>全球最大货源平台</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://www.yiwugo.com" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🛍️</span><span class="info"><strong>义乌购</strong><span>小商品之都线上市场</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://www.made-in-china.com" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🏗️</span><span class="info"><strong>中国制造网</strong><span>B2B工业品直供</span></span><span class="arrow">↗</span>
+  </a>
 </div>
 
-<!-- PRODUCTS -->
-<h2 class="section-title" id="products"><span class="icon">🔍</span> 四、选品：成败在此一举</h2>
-<div class="highlight">
-  <strong>行业铁律：七分靠选品，三分靠运营。</strong> 选对了产品，等于成功了一半。选错了产品，再好的运营也难救。
+<div class="res-cat">💳 国际收款平台</div>
+<div class="resource-grid">
+  <a href="https://www.worldfirst.com.cn" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🥇</span><span class="info"><strong>WorldFirst 万里汇</strong><span>0.3%费率，行业最低</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://www.lianlianpay.com" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🥈</span><span class="info"><strong>连连支付</strong><span>T+0当天到账，50+牌照</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://www.pingpongx.com" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🥉</span><span class="info"><strong>PingPong</strong><span>无隐藏费用，增值服务多</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://www.payoneer.com/zh" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🌐</span><span class="info"><strong>Payoneer 派安盈</strong><span>覆盖平台最多，亚马逊官方推荐</span></span><span class="arrow">↗</span>
+  </a>
 </div>
 
-<div class="card-grid">
-  <div class="card">
-    <h3>✅ 好产品的标准</h3>
-    <ul>
-      <li>体积小、重量轻 → 物流成本低</li>
-      <li>非季节性 → 需求稳定</li>
-      <li>毛利率 ≥ 30%（建议50%+）</li>
-      <li>月销量 300-1500 单（需求稳定）</li>
-      <li>价格 $15-$75（冲动消费区间）</li>
-      <li>可稳定供货，供应链有保障</li>
-      <li>无知识产权侵权风险</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h3>❌ 新手避开的品类</h3>
-    <ul>
-      <li>食品、保健品 → 认证复杂</li>
-      <li>复杂电子产品 → 售后麻烦</li>
-      <li>大件家具 → 物流成本高</li>
-      <li>品牌垄断品类 → 竞争不过</li>
-      <li>高退货率品类 → 利润被消耗</li>
-      <li>易燃易爆品 → 物流限制</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h3>🛠️ 选品工具推荐</h3>
-    <ul>
-      <li><strong>卖家精灵</strong> — 亚马逊选品+竞品分析+1688联动</li>
-      <li><strong>Jungle Scout</strong> — 市场数据雷达</li>
-      <li><strong>Helium 10</strong> — 全流程工具套件</li>
-      <li><strong>Keepa</strong> — 历史价格追踪</li>
-      <li><strong>Google Trends</strong> — 搜索趋势验证</li>
-      <li><strong>TikTok Creative Center</strong> — 短视频潮流发现</li>
-      <li><strong>FastMoss</strong> — TikTok电商数据</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h3>🔗 找货源（供应链）</h3>
-    <ul>
-      <li><strong>1688.com</strong> — 全球最大货源平台</li>
-      <li><strong>义乌购</strong> — 小商品之都</li>
-      <li><strong>中国制造网</strong> — B2B工业品</li>
-      <li><strong>产业带实地考察</strong> — 澄海玩具、南通家纺、深圳3C</li>
-      <li>核心原则：售价 ≥ 成本 × 3</li>
-      <li>向2-3家供应商索样，对比质量</li>
-    </ul>
-  </div>
+<div class="res-cat">🏛️ 政府与合规</div>
+<div class="resource-grid">
+  <a href="https://www.singlewindow.cn" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🇨🇳</span><span class="info"><strong>中国国际贸易单一窗口</strong><span>海关备案免费办理</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://www.customs.gov.cn" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🛃</span><span class="info"><strong>中国海关总署</strong><span>政策法规与通关查询</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://www.mofcom.gov.cn" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">📋</span><span class="info"><strong>商务部</strong><span>跨境电商综试区政策</span></span><span class="arrow">↗</span>
+  </a>
 </div>
 
-<div class="card-full" style="margin-top:1rem;">
-  <h3>📋 选品标准工作流</h3>
-  <div class="timeline">
-    <div class="step"><div class="week">① 趋势初筛</div><div class="task">Google Trends + TikTok<br>发现上升趋势品类</div></div>
-    <div class="step"><div class="week">② 数据验证</div><div class="task">卖家精灵/JS筛选<br>符合标准的潜力品</div></div>
-    <div class="step"><div class="week">③ 竞品拆解</div><div class="task">分析竞品评论<br>发现差评痛点</div></div>
-    <div class="step"><div class="week">④ 供应链评估</div><div class="task">1688以图搜货<br>核算利润空间</div></div>
-    <div class="step"><div class="week">⑤ 小批量测试</div><div class="task">采购50-100件<br>上架观察7-10天</div></div>
-    <div class="step"><div class="week">⑥ 批量放大</div><div class="task">数据达标后<br>备货+广告投放</div></div>
-  </div>
+<div class="res-cat">📚 学习与社区</div>
+<div class="resource-grid">
+  <a href="https://www.amz123.com" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🔗</span><span class="info"><strong>AMZ123 跨境导航</strong><span>卖家工具与知识导航站</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://www.cifnews.com" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">📰</span><span class="info"><strong>雨果跨境</strong><span>跨境电商行业资讯</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://www.10100.com" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">🖥️</span><span class="info"><strong>大数跨境</strong><span>跨境数据与趋势分析</span></span><span class="arrow">↗</span>
+  </a>
+  <a href="https://www.shopify.com/zh/blog/cross-border-ecommerce-management" target="_blank" rel="noopener" class="res-link">
+    <span class="icon">📖</span><span class="info"><strong>Shopify 跨境电商博客</strong><span>优质运营指南</span></span><span class="arrow">↗</span>
+  </a>
 </div>
 
-<!-- LOGISTICS -->
-<h2 class="section-title" id="logistics"><span class="icon">🚚</span> 五、物流：你不能忽视的成本大头</h2>
-<div class="table-wrap">
-<table>
-  <thead>
-    <tr><th>物流模式</th><th>时效</th><th>单件成本参考</th><th>优点</th><th>缺点</th><th>适合场景</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><strong>小包直邮</strong></td><td>7-25天</td><td>¥65-125</td><td>零库存压力</td><td>无Prime流量、退货损失大</td><td>测款、轻小件</td></tr>
-    <tr><td><strong>亚马逊FBA</strong></td><td>3-5天（Prime）</td><td>¥35-55</td><td>Prime标识、高转化</td><td>仓储费、库容限制</td><td>爆款、亚马逊深耕</td></tr>
-    <tr><td><strong>第三方海外仓</strong></td><td>1-5天</td><td>¥30-48</td><td>成本最低、多平台共用</td><td>需提前备货</td><td>多平台运营、中大件</td></tr>
-    <tr><td><strong>全托管（平台负责）</strong></td><td>3-10天</td><td>平台定价</td><td>零运营负担</td><td>利润极薄</td><td>Temu/SHEIN卖家</td></tr>
-  </tbody>
-</table>
+<!-- ====== 深入阅读导航卡片 ====== -->
+<h2 class="section-title" style="margin-top:2rem;"><span class="dot"></span> 深入阅读 · 分篇导航</h2>
+<p style="color:var(--text-secondary);font-size:.85rem;margin-bottom:.8rem;">点击卡片进入对应主题的详细内容，每篇独立展示，清爽不累 👇</p>
+
+<div class="nav-grid">
+  <a href="platforms.html" class="nav-card">
+    <div class="nc-icon">🏪</div><span class="badge badge-core">必读</span>
+    <h3>平台选择指南</h3><p>8大平台横向对比，帮你找到最适合的那个</p>
+  </a>
+  <a href="products.html" class="nav-card">
+    <div class="nc-icon">🔍</div><span class="badge badge-hot">核心</span>
+    <h3>选品方法论</h3><p>数据驱动选品、工具推荐、1688找货源全流程</p>
+  </a>
+  <a href="logistics.html" class="nav-card">
+    <div class="nc-icon">🚚</div>
+    <h3>物流方案对比</h3><p>FBA vs 海外仓 vs 小包直邮，成本一目了然</p>
+  </a>
+  <a href="payment.html" class="nav-card">
+    <div class="nc-icon">💳</div>
+    <h3>国际收款指南</h3><p>四大平台费率对比，帮你一年省下几千块</p>
+  </a>
+  <a href="qualifications.html" class="nav-card">
+    <div class="nc-icon">📋</div>
+    <h3>资质与注册</h3><p>从注册公司到海关备案，7步走通全流程</p>
+  </a>
+  <a href="cases.html" class="nav-card">
+    <div class="nc-icon">🌟</div><span class="badge badge-new">真实</span>
+    <h3>成功案例</h3><p>500元起家、00后一人公司…普通人也可以</p>
+  </a>
+  <a href="pitfalls.html" class="nav-card">
+    <div class="nc-icon">⚠️</div>
+    <h3>避坑指南</h3><p>知识产权、资金链、账号关联…6大常见雷区</p>
+  </a>
+  <a href="full-guide.html" class="nav-card">
+    <div class="nc-icon">📖</div>
+    <h3>完整版指南</h3><p>一页看完所有内容，适合打印存档</p>
+  </a>
 </div>
 
-<div class="highlight">
-  <strong>⚠️ 2025-2026重大变化：</strong> 美国T86免税清关通道关闭，欧盟取消150欧元以下小包免税。小包直邮的"免税红利"彻底终结。海外仓+FBA成为主流选择。<br>
-  <strong>新手建议：</strong> 测款用小包直邮（零风险验证）→ 起量后转FBA/海外仓（降本提效）
 </div>
-
-<!-- PAYMENT -->
-<h2 class="section-title" id="payment"><span class="icon">💳</span> 六、收款：把钱安全拿回来</h2>
-<div class="table-wrap">
-<table>
-  <thead>
-    <tr><th>平台</th><th>提现费率</th><th>到账时间</th><th>特点</th><th>适合谁</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><strong>WorldFirst（万里汇）</strong></td><td>0.3%封顶</td><td>T+0~T+1</td><td>费率最低，0汇损</td><td>费率敏感型</td></tr>
-    <tr><td><strong>连连支付</strong></td><td>0.7%封顶</td><td>T+0当天到账</td><td>到账最快，50+牌照</td><td>中小卖家</td></tr>
-    <tr><td><strong>PingPong</strong></td><td>1%封顶</td><td>T+0~T+2</td><td>无隐藏费用，增值服务多</td><td>中大型卖家</td></tr>
-    <tr><td><strong>Payoneer</strong></td><td>1.2%</td><td>T+1~T+3</td><td>亚马逊官方推荐，覆盖最广</td><td>多平台大卖家</td></tr>
-  </tbody>
-</table>
-</div>
-<div class="highlight">
-  <strong>💡 省钱技巧：</strong> 新手推荐 WorldFirst 或连连支付，费率低、操作简单。注意：Payoneer 12个月收款低于$2,000会收$29.95年费，小额卖家慎选。
-</div>
-
-<!-- QUALIFICATIONS -->
-<h2 class="section-title" id="qualify"><span class="icon">📋</span> 七、资质与注册：合法合规第一步</h2>
-<div class="card-grid">
-  <div class="card">
-    <h3>🏢 注册公司</h3>
-    <ul>
-      <li>推荐类型：<strong>有限责任公司</strong></li>
-      <li>经营范围需包含："电子商务""货物进出口"</li>
-      <li>注册资本：认缴制，无需实缴</li>
-      <li>费用：约500-2000元（含刻章）</li>
-      <li>时间：约3-7个工作日</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h3>🛃 海关注册</h3>
-    <ul>
-      <li>平台：<strong>中国国际贸易单一窗口</strong></li>
-      <li>全程线上，免费办理</li>
-      <li>自动获得进出口经营权</li>
-      <li>办理报关单位注册登记</li>
-      <li>申领电子口岸IC卡</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h3>🔖 跨境电商备案</h3>
-    <ul>
-      <li>单一窗口勾选"跨境电子商务企业"</li>
-      <li>开通通关模式：<strong>9610</strong>（B2C出口）</li>
-      <li>如需保税：<strong>1210</strong>（保税出口）</li>
-      <li>海外仓模式：<strong>9810</strong></li>
-      <li>B2B直接出口：<strong>9710</strong></li>
-    </ul>
-  </div>
-  <div class="card">
-    <h3>🌍 其他可能需要</h3>
-    <ul>
-      <li><strong>欧盟VAT税号</strong> — 做欧洲市场必备</li>
-      <li><strong>目标国产品认证</strong> — CE（欧盟）、FCC（美国）</li>
-      <li><strong>商标注册</strong> — 保护品牌，防止跟卖</li>
-      <li><strong>出口退税备案</strong> — 合规后享受退税</li>
-    </ul>
-  </div>
-</div>
-
-<a href="https://www.singlewindow.cn" target="_blank" rel="noopener" class="link-card" style="margin-top:1rem;">
-  <span class="lc-icon">🔗</span>
-  <span class="lc-text"><strong>中国国际贸易单一窗口（免费办理海关注册）</strong>singlewindow.cn</span>
-</a>
-
-<!-- CASES -->
-<h2 class="section-title" id="cases"><span class="icon">🌟</span> 八、真实成功案例：普通人也可以</h2>
-<div class="card-grid">
-  <div class="card">
-    <h3>🪙 500元→20亿元</h3>
-    <p style="margin-bottom:.4rem;"><span class="tag">义乌</span><span class="tag">80后</span><span class="tag">10年</span></p>
-    <p>涂宏名2015年带着仅500元到义乌，从骑自行车取货发货开始，搭上跨境电商政策快车，2025年销售额突破<strong>20亿元</strong>，每天近20万单发往全球。</p>
-  </div>
-  <div class="card">
-    <h3>📦 玩具轨道车爆单</h3>
-    <p style="margin-bottom:.4rem;"><span class="tag">TikTok</span><span class="tag">澄海玩具</span><span class="tag">半年300万</span></p>
-    <p>谢鹏雄裸辞后入驻TikTok Shop全托管，一款玩具轨道车因5900万播放量视频爆单，最高日销<strong>2000单</strong>，半年业绩从0到<strong>300万元</strong>。</p>
-  </div>
-  <div class="card">
-    <h3>🎓 00后"一人公司"</h3>
-    <p style="margin-bottom:.4rem;"><span class="tag">应届生</span><span class="tag">TikTok</span><span class="tag">月入6-7万</span></p>
-    <p>李禾然大四在TikTok开饰品店，毕业后全职做跨境电商，月均营业额<strong>六七万元</strong>，旺季单日营业额可达<strong>4000-5000元</strong>。</p>
-  </div>
-  <div class="card">
-    <h3>🤖 AI+跨境电商</h3>
-    <p style="margin-bottom:.4rem;"><span class="tag">OPC模式</span><span class="tag">AI赋能</span><span class="tag">一人成军</span></p>
-    <p>庄伟从美业转型跨境，选户外靴品类，用AI批量生成短视频，两个月卖出<strong>2000单</strong>，利润率稳定在<strong>30%</strong>。OPC孵化已帮助70+创业者。</p>
-  </div>
-</div>
-
-<div class="highlight">
-  <strong>🎯 这些成功案例的共同点：</strong> 低门槛起步 → 善用免费资源 → 借助AI工具 → 深耕一个细分品类 → 持续学习和复盘。没有谁是一夜暴富的，但每个认真做的人都在积累。
-</div>
-
-<!-- RESOURCES -->
-<h2 class="section-title" id="resources"><span class="icon">🔗</span> 九、超级资源包：你需要的一切链接</h2>
-
-<h3 style="margin:1rem 0 .6rem;font-size:1rem;">🏪 主流平台入驻入口</h3>
-<div class="card-grid">
-  <a href="https://gs.amazon.cn" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">📦</span><span class="lc-text"><strong>Amazon 全球开店</strong>gs.amazon.cn — 官方中文入驻通道</span></a>
-  <a href="https://shopee.cn" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🛒</span><span class="lc-text"><strong>Shopee 入驻</strong>shopee.cn — 东南亚首选</span></a>
-  <a href="https://seller.tiktokglobalshop.com" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🎬</span><span class="lc-text"><strong>TikTok Shop 卖家中心</strong> — 内容电商入驻</span></a>
-  <a href="https://seller.kuajing.pinduoduo.com" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">⚡</span><span class="lc-text"><strong>Temu 卖家中心</strong> — 拼多多出海平台</span></a>
-  <a href="https://sell.aliexpress.com" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🌍</span><span class="lc-text"><strong>速卖通 卖家中心</strong>sell.aliexpress.com</span></a>
-  <a href="https://www.ebay.cn" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🔨</span><span class="lc-text"><strong>eBay 中国</strong>ebay.cn — 汽配/二手品类强</span></a>
-</div>
-
-<h3 style="margin:1rem 0 .6rem;font-size:1rem;">🛠️ 选品与数据工具</h3>
-<div class="card-grid">
-  <a href="https://www.sellersprite.com" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🔍</span><span class="lc-text"><strong>卖家精灵</strong>sellersprite.com — 亚马逊选品+1688联动</span></a>
-  <a href="https://www.junglescout.com" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">📊</span><span class="lc-text"><strong>Jungle Scout</strong>junglescout.com — 市场数据雷达</span></a>
-  <a href="https://www.helium10.com" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🎈</span><span class="lc-text"><strong>Helium 10</strong>helium10.com — 全流程运营套件</span></a>
-  <a href="https://keepa.com" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">📉</span><span class="lc-text"><strong>Keepa</strong>keepa.com — 亚马逊历史价格追踪</span></a>
-  <a href="https://trends.google.com" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">📈</span><span class="lc-text"><strong>Google Trends</strong>trends.google.com — 搜索趋势</span></a>
-  <a href="https://www.fastmoss.com" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🎯</span><span class="lc-text"><strong>FastMoss</strong>fastmoss.com — TikTok电商数据</span></a>
-</div>
-
-<h3 style="margin:1rem 0 .6rem;font-size:1rem;">🏭 货源与供应链</h3>
-<div class="card-grid">
-  <a href="https://www.1688.com" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🏭</span><span class="lc-text"><strong>1688 阿里巴巴</strong>1688.com — 全球最大货源平台</span></a>
-  <a href="https://www.yiwugo.com" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🛍️</span><span class="lc-text"><strong>义乌购</strong>yiwugo.com — 小商品之都线上市场</span></a>
-  <a href="https://www.made-in-china.com" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🏗️</span><span class="lc-text"><strong>中国制造网</strong>made-in-china.com — B2B工业品</span></a>
-</div>
-
-<h3 style="margin:1rem 0 .6rem;font-size:1rem;">💳 国际收款平台</h3>
-<div class="card-grid">
-  <a href="https://www.worldfirst.com.cn" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🥇</span><span class="lc-text"><strong>WorldFirst 万里汇</strong>worldfirst.com.cn — 0.3%费率</span></a>
-  <a href="https://www.lianlianpay.com" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🥈</span><span class="lc-text"><strong>连连支付</strong>lianlianpay.com — 当天到账</span></a>
-  <a href="https://www.pingpongx.com" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🥉</span><span class="lc-text"><strong>PingPong</strong>pingpongx.com — 增值服务多</span></a>
-  <a href="https://www.payoneer.com/zh" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🌐</span><span class="lc-text"><strong>Payoneer 派安盈</strong>payoneer.com — 覆盖最广</span></a>
-</div>
-
-<h3 style="margin:1rem 0 .6rem;font-size:1rem;">📚 学习与社区</h3>
-<div class="card-grid">
-  <a href="https://www.shopify.com/zh/blog/cross-border-ecommerce-management" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">📖</span><span class="lc-text"><strong>Shopify 跨境电商博客</strong> — 优质运营指南</span></a>
-  <a href="https://www.amz123.com" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🔗</span><span class="lc-text"><strong>AMZ123 跨境导航</strong>amz123.com — 卖家工具导航站</span></a>
-  <a href="https://www.cifnews.com" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">📰</span><span class="lc-text"><strong>雨果跨境</strong>cifnews.com — 跨境行业资讯</span></a>
-  <a href="https://www.10100.com" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🖥️</span><span class="lc-text"><strong>大数跨境</strong>10100.com — 跨境数据与资讯</span></a>
-</div>
-
-<h3 style="margin:1rem 0 .6rem;font-size:1rem;">🏛️ 政府与合规</h3>
-<div class="card-grid">
-  <a href="https://www.singlewindow.cn" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🇨🇳</span><span class="lc-text"><strong>中国国际贸易单一窗口</strong>singlewindow.cn — 海关/资质免费办理</span></a>
-  <a href="https://www.customs.gov.cn" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">🛃</span><span class="lc-text"><strong>中国海关总署</strong>customs.gov.cn — 政策法规查询</span></a>
-  <a href="https://www.mofcom.gov.cn" target="_blank" rel="noopener" class="link-card"><span class="lc-icon">📋</span><span class="lc-text"><strong>商务部</strong>mofcom.gov.cn — 跨境电商综试区政策</span></a>
-</div>
-
-<!-- DANGER ZONE -->
-<h2 class="section-title"><span class="icon">⚠️</span> 十、新手避坑：这些雷千万别踩</h2>
-<div class="card-grid">
-  <div class="card">
-    <h3>💣 盲目跟风爆品</h3>
-    <p>看到别人卖什么火就跟什么，结果竞争激烈、利润被卷没。<strong>做差异化，找细分蓝海。</strong></p>
-  </div>
-  <div class="card">
-    <h3>💣 忽视物流成本</h3>
-    <p>产品定价时只算进货成本，不算物流。大件货物流费可能比产品本身还贵。<strong>定价前先核算全链路。</strong></p>
-  </div>
-  <div class="card">
-    <h3>💣 知识产权侵权</h3>
-    <p>2025年亚马逊因合规封号1.2万家中国卖家，冻结超200亿元。<strong>选品前务必排查专利/商标。</strong></p>
-  </div>
-  <div class="card">
-    <h3>💣 忽视税务合规</h3>
-    <p>欧洲VAT、日本JCT……不注册就不让卖。<strong>目标市场税务义务务必提前了解。</strong></p>
-  </div>
-  <div class="card">
-    <h3>💣 资金链断裂</h3>
-    <p>一次性备货太多，货款压住，广告费又烧完了。<strong>小批量测试，验证后再放大。</strong></p>
-  </div>
-  <div class="card">
-    <h3>💣 账号关联被封</h3>
-    <p>在同一台电脑/同一网络登录多个店铺被关联封号。<strong>使用指纹浏览器或独立IP环境。</strong></p>
-  </div>
-</div>
-
-</div><!-- /container -->
 
 <footer>
   <p>📅 数据更新于 2026年6月 · 信息采集自公开权威来源</p>
-  <p>本页面仅供学习参考，具体操作请咨询专业机构</p>
-  <p style="margin-top:.5rem;">
-    <a href="#">↑ 回到顶部</a>
-  </p>
+  <p>本页面仅供学习参考 · <a href="full-guide.html">查看完整版</a> · <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">↑ 回到顶部</a></p>
 </footer>
 
-<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
-
-<script>
-// Mobile nav toggle
-const toggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
-toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-
-// Back to top button
-const btt = document.getElementById('btt');
-window.addEventListener('scroll', () => {
-  btt.classList.toggle('visible', window.scrollY > 500);
-});
-
-// Fade in cards on scroll
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('fade-in'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.card, .card-full, .highlight, .link-card, .timeline .step').forEach(el => observer.observe(el));
-</script>
 </body>
 </html>
