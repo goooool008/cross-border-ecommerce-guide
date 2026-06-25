@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>选品方法论 · 跨境电商从零开始</title>
+<style>
+  :root {
+    --bg: #f0f2f5;
+    --card: #ffffff;
+    --text: #1a1a2e;
+    --text-secondary: #6b7280;
+    --accent: #4f46e5;
+    --accent-hover: #4338ca;
+    --border: #e5e7eb;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-hover: 0 10px 25px rgba(0,0,0,0.1);
+    --radius: 12px;
+    --transition: 0.2s ease;
+    --highlight-bg: #eef2ff;
+    --highlight-border: #c7d2fe;
+    --tag-bg: #eef2ff;
+    --tag-text: #4f46e5;
+    --danger-light: #fef2f2;
+    --success-light: #ecfdf5;
+  }
+
+  /* Dark mode */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --accent: #818cf8;
+      --accent-hover: #6366f1;
+      --border: #334155;
+      --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+      --shadow-hover: 0 10px 25px rgba(0,0,0,0.4);
+      --highlight-bg: #1e1b4b;
+      --highlight-border: #3730a3;
+      --tag-bg: #1e1b4b;
+      --tag-text: #a5b4fc;
+      --danger-light: #450a0a;
+      --success-light: #022c22;
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+                 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.7;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 20px 64px;
+  }
+
+  /* Back link */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    transition: color var(--transition);
+  }
+  .back-link:hover {
+    color: var(--accent-hover);
+  }
+
+  /* Page header */
+  .page-header {
+    margin-bottom: 36px;
+  }
+  .page-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .page-header .subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 36px;
+  }
+  .section-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title .icon {
+    font-size: 1.4rem;
+  }
+
+  /* Iron Rule highlight */
+  .iron-rule {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .iron-rule p {
+    font-size: 1.05rem;
+    color: var(--text);
+    margin: 0;
+  }
+  .iron-rule strong {
+    color: var(--accent);
+  }
+
+  /* Card */
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    transition: box-shadow var(--transition);
+  }
+  .card:hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  /* Checklist / bullet lists */
+  .checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .checklist li {
+    padding-left: 28px;
+    position: relative;
+    color: var(--text);
+    font-size: 0.98rem;
+  }
+  .checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 18px;
+    height: 18px;
+    background: var(--success-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .checklist li::after {
+    content: '✓';
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    font-size: 11px;
+    color: #10b981;
+    font-weight: 700;
+  }
+
+  /* Avoid list (danger-style) */
+  .avoid-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .avoid-list li {
+    padding: 8px 14px;
+    background: var(--danger-light);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .avoid-list li .marker {
+    color: #ef4444;
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  /* Tools grid */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .tool-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    transition: box-shadow var(--transition), transform var(--transition);
+  }
+  .tool-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+  .tool-card .tool-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .tool-card .tool-desc {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+  }
+
+  /* Supply chain cards */
+  .supply-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .supply-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    text-align: center;
+    transition: box-shadow var(--transition);
+  }
+  .supply-card:hover {
+    box-shadow: var(--shadow-hover);
+  }
+  .supply-card .name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+  }
+  .supply-card .desc {
+    font-size: 0.83rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+
+  /* Principle boxes */
+  .principles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .principle-tag {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+
+  /* Step workflow cards */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .step-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 22px 20px;
+    position: relative;
+    transition: box-shadow var(--transition), transform var(--transition);
+    border-top: 3px solid var(--accent);
+  }
+  .step-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+  .step-card .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+  .step-card .step-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .step-card .step-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Strategy cards */
+  .strategy-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .strategy-item {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 18px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    transition: box-shadow var(--transition);
+  }
+  .strategy-item:hover {
+    box-shadow: var(--shadow-hover);
+  }
+  .strategy-item .strategy-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .strategy-item .strategy-content strong {
+    display: block;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .strategy-item .strategy-content span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  /* Highlighted advice box */
+  .advice-box {
+    background: var(--highlight-bg);
+    border: 2px solid var(--highlight-border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    position: relative;
+  }
+  .advice-box::before {
+    content: '💡';
+    position: absolute;
+    top: -18px;
+    left: 24px;
+    font-size: 1.8rem;
+    background: var(--bg);
+    padding: 0 8px;
+    border-radius: 50%;
+  }
+  .advice-box p {
+    font-size: 1.05rem;
+    color: var(--text);
+    line-height: 1.8;
+    margin: 0;
+  }
+  .advice-box strong {
+    color: var(--accent);
+  }
+
+  /* Section sub-heading */
+  .sub-heading {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 20px 0 12px;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .container {
+      padding: 20px 14px 48px;
+    }
+    .page-header h1 {
+      font-size: 1.5rem;
+    }
+    .section-title {
+      font-size: 1.15rem;
+    }
+    .tools-grid {
+      grid-template-columns: 1fr;
+    }
+    .steps {
+      grid-template-columns: 1fr;
+    }
+    .supply-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .supply-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Back link -->
+  <a href="todo.html" class="back-link">← 返回首页</a>
+
+  <!-- Page header -->
+  <div class="page-header">
+    <h1>🔍 选品方法论</h1>
+    <p class="subtitle">跨境电商从零开始 · 选品是成功的第一步</p>
+  </div>
+
+  <!-- 行业铁律 -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon">⚡</span>行业铁律</h2>
+    <div class="iron-rule">
+      <p><strong>七分靠选品，三分靠运营。</strong>选对了产品，等于成功了一半。</p>
+    </div>
+  </div>
+
+  <!-- 好产品的标准 -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon">✅</span>好产品的标准</h2>
+    <div class="card">
+      <ul class="checklist">
+        <li>体积小、重量轻 → 物流成本低</li>
+        <li>非季节性 → 需求稳定</li>
+        <li>毛利率 ≥ 30%（建议50%+）</li>
+        <li>月销量 300-1500 单</li>
+        <li>价格 $15-$75（冲动消费带）</li>
+        <li>可稳定供货</li>
+        <li>无知识产权侵权风险</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 新手避开的品类 -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon">🚫</span>新手避开的品类</h2>
+    <div class="card">
+      <ul class="avoid-list">
+        <li><span class="marker">✕</span>食品、保健品（认证复杂）</li>
+        <li><span class="marker">✕</span>复杂电子产品（售后麻烦）</li>
+        <li><span class="marker">✕</span>大件家具（物流成本高）</li>
+        <li><span class="marker">✕</span>品牌垄断品类</li>
+        <li><span class="marker">✕</span>高退货率品类</li>
+        <li><span class="marker">✕</span>易燃易爆品</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 选品工具推荐 -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon">🛠️</span>选品工具推荐</h2>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-name">卖家精灵</div>
+        <div class="tool-desc">亚马逊选品 + 竞品分析 + 1688联动</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">Jungle Scout</div>
+        <div class="tool-desc">市场数据雷达</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">Helium 10</div>
+        <div class="tool-desc">全流程工具套件</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">Keepa</div>
+        <div class="tool-desc">历史价格追踪</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">Google Trends</div>
+        <div class="tool-desc">搜索趋势验证</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">TikTok Creative Center</div>
+        <div class="tool-desc">短视频潮流发现</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-name">FastMoss</div>
+        <div class="tool-desc">TikTok电商数据</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 找货源（供应链） -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon">🏭</span>找货源（供应链）</h2>
+    <div class="supply-grid">
+      <div class="supply-card">
+        <div class="name">1688.com</div>
+        <div class="desc">全球最大货源平台</div>
+      </div>
+      <div class="supply-card">
+        <div class="name">义乌购</div>
+        <div class="desc">小商品之都</div>
+      </div>
+      <div class="supply-card">
+        <div class="name">中国制造网</div>
+        <div class="desc">B2B工业品</div>
+      </div>
+      <div class="supply-card">
+        <div class="name">产业带实地考察</div>
+        <div class="desc">澄海玩具、南通家纺、深圳3C</div>
+      </div>
+    </div>
+
+    <p class="sub-heading">核心原则</p>
+    <div class="principles">
+      <span class="principle-tag">售价 ≥ 成本 × 3</span>
+      <span class="principle-tag">向2-3家供应商索样，对比质量</span>
+    </div>
+  </div>
+
+  <!-- 选品标准工作流 -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon">📋</span>选品标准工作流</h2>
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-num">①</div>
+        <div class="step-title">趋势初筛</div>
+        <div class="step-desc">Google Trends + TikTok发现上升趋势品类</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">②</div>
+        <div class="step-title">数据验证</div>
+        <div class="step-desc">卖家精灵/JS筛选符合标准的潜力品</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">③</div>
+        <div class="step-title">竞品拆解</div>
+        <div class="step-desc">分析竞品评论，发现差评痛点</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">④</div>
+        <div class="step-title">供应链评估</div>
+        <div class="step-desc">1688以图搜货，核算利润空间</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">⑤</div>
+        <div class="step-title">小批量测试</div>
+        <div class="step-desc">采购50-100件，上架观察7-10天</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">⑥</div>
+        <div class="step-title">批量放大</div>
+        <div class="step-desc">数据达标后，备货 + 广告投放</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 差异化策略 -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon">💎</span>差异化策略</h2>
+    <div class="strategy-list">
+      <div class="strategy-item">
+        <span class="strategy-icon">🔧</span>
+        <div class="strategy-content">
+          <strong>功能升级</strong>
+          <span>普通手机壳加磁吸支架</span>
+        </div>
+      </div>
+      <div class="strategy-item">
+        <span class="strategy-icon">🎯</span>
+        <div class="strategy-content">
+          <strong>场景细分</strong>
+          <span>针对钓鱼、露营、宠物等小众需求</span>
+        </div>
+      </div>
+      <div class="strategy-item">
+        <span class="strategy-icon">🌱</span>
+        <div class="strategy-content">
+          <strong>材质优化</strong>
+          <span>环保可降解材料、食品级硅胶制品</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 核心建议 -->
+  <div class="section">
+    <h2 class="section-title"><span class="icon">🎯</span>核心建议</h2>
+    <div class="advice-box">
+      <p>
+        先用数据验证市场需求，再通过<strong>1688</strong>快速匹配供应链，最后<strong>小批量测试</strong>验证，从而大幅降低选品试错成本。
+      </p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
