@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资质与注册 · 跨境电商从零开始</title>
+    <style>
+        :root {
+            --bg: #f5f5f7;
+            --card: #ffffff;
+            --text: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --accent: #0071e3;
+            --border: #d2d2d7;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --radius: 12px;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1a1a2e;
+            --card: #16213e;
+            --text: #e4e4e7;
+            --text-secondary: #a1a1aa;
+            --accent: #60a5fa;
+            --border: #334155;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1a1a2e;
+                --card: #16213e;
+                --text: #e4e4e7;
+                --text-secondary: #a1a1aa;
+                --accent: #60a5fa;
+                --border: #334155;
+                --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+                --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 0.7;
+        }
+
+        /* Page header */
+        .page-header {
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .page-header .subtitle {
+            font-size: 17px;
+            color: var(--text-secondary);
+        }
+
+        /* Steps */
+        .steps-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .step-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 30px;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.3s, transform 0.2s, background-color 0.3s;
+        }
+
+        .step-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: var(--accent);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .step-card h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: var(--text);
+        }
+
+        .step-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .step-card ul li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .step-card ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.6;
+        }
+
+        .step-card ul li strong {
+            color: var(--text);
+        }
+
+        /* Highlight box */
+        .highlight-box {
+            background: var(--card);
+            border: 2px solid var(--accent);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            margin-top: 32px;
+            box-shadow: var(--shadow);
+        }
+
+        .highlight-box h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .highlight-box p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        .highlight-box p strong {
+            color: var(--text);
+        }
+
+        /* Other section */
+        .other-section {
+            margin-top: 32px;
+        }
+
+        .other-section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .other-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .other-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.3s, transform 0.2s, background-color 0.3s;
+        }
+
+        .other-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .other-card .tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        .other-card .title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .other-card .desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        /* Dark mode toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .theme-toggle:hover {
+            box-shadow: var(--shadow-hover);
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .container {
+                padding: 16px 14px 40px;
+            }
+
+            .page-header h1 {
+                font-size: 26px;
+            }
+
+            .step-card {
+                padding: 20px 18px;
+            }
+
+            .step-card h2 {
+                font-size: 18px;
+            }
+
+            .other-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .highlight-box {
+                padding: 18px 20px;
+            }
+
+            .theme-toggle {
+                bottom: 16px;
+                right: 16px;
+                width: 38px;
+                height: 38px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Back link -->
+        <a href="index.html" class="back-link">← 返回首页</a>
+
+        <!-- Page header -->
+        <div class="page-header">
+            <h1>资质与注册</h1>
+            <p class="subtitle">跨境电商从零开始 · 全流程指南</p>
+        </div>
+
+        <!-- Steps -->
+        <div class="steps-grid">
+
+            <!-- Step 1 -->
+            <div class="step-card">
+                <span class="step-number">第一步</span>
+                <h2>注册公司</h2>
+                <ul>
+                    <li><strong>推荐类型：</strong>有限责任公司</li>
+                    <li><strong>经营范围需包含：</strong>"电子商务""货物进出口"</li>
+                    <li><strong>注册资本：</strong>认缴制，无需实缴</li>
+                    <li><strong>费用：</strong>约500-2000元（含刻章）</li>
+                    <li><strong>时间：</strong>约3-7个工作日</li>
+                    <li><strong>材料：</strong>申请书、章程、股东/法人身份证明、注册地址证明、企业名称预先核准</li>
+                </ul>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-card">
+                <span class="step-number">第二步</span>
+                <h2>刻制公司印章</h2>
+                <ul>
+                    <li>凭营业执照到公安局指定点刻制：<strong>公章、财务章、法人章</strong></li>
+                </ul>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-card">
+                <span class="step-number">第三步</span>
+                <h2>银行开户 + 税务报到</h2>
+                <ul>
+                    <li><strong>银行开户：</strong>带营业执照正副本、公章、法人章等到商业银行开设基本户</li>
+                    <li><strong>税务报到：</strong>领取营业执照后30日内到税务机关办理，核定税种</li>
+                </ul>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-card">
+                <span class="step-number">第四步</span>
+                <h2>报关单位注册登记</h2>
+                <ul>
+                    <li><strong>平台：</strong>中国国际贸易单一窗口（全程线上、免费）</li>
+                    <li><strong>流程：</strong>登录 → 企业资质 → 报关单位备案 → 填写信息 → 提交审核</li>
+                    <li><strong>结果：</strong>获《报关单位注册登记证书》</li>
+                </ul>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step-card">
+                <span class="step-number">第五步</span>
+                <h2>申领电子口岸IC卡</h2>
+                <ul>
+                    <li>用于跨境电商备案、报关、退税等操作</li>
+                </ul>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step-card">
+                <span class="step-number">第六步</span>
+                <h2>跨境电商企业备案</h2>
+                <ul>
+                    <li>在单一窗口勾选<strong>"跨境电子商务企业"</strong></li>
+                    <li><strong>开通通关模式：</strong>9610（B2C出口）、1210（保税出口）、9710（B2B直接出口）、9810（海外仓出口）</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Other可能需要 -->
+        <div class="other-section">
+            <h2>其他可能需要</h2>
+            <div class="other-grid">
+                <div class="other-card">
+                    <div class="tag">税务</div>
+                    <div class="title">欧盟VAT税号</div>
+                    <div class="desc">做欧洲市场必备</div>
+                </div>
+                <div class="other-card">
+                    <div class="tag">认证</div>
+                    <div class="title">目标国产品认证</div>
+                    <div class="desc">CE（欧盟）、FCC（美国）</div>
+                </div>
+                <div class="other-card">
+                    <div class="tag">品牌</div>
+                    <div class="title">商标注册</div>
+                    <div class="desc">保护品牌，防止跟卖</div>
+                </div>
+                <div class="other-card">
+                    <div class="tag">退税</div>
+                    <div class="title">出口退税备案</div>
+                    <div class="desc">合规后享受退税</div>
+                </div>
+                <div class="other-card">
+                    <div class="tag">外汇</div>
+                    <div class="title">外汇账户备案</div>
+                    <div class="desc">合法接收境外货款</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Highlight box -->
+        <div class="highlight-box">
+            <h3>重要提醒</h3>
+            <p>
+                海关备案全过程<strong>不收费</strong>，全程可在<strong>"中国国际贸易单一窗口"</strong>官网免费办理，谨防任何"代备案收费"骗局。2025年国家<strong>"多证合一"</strong>改革后，企业设立自动获得进出口经营权，无需再单独办理《对外贸易经营者备案登记》。
+            </p>
+        </div>
+    </div>
+
+    <!-- Dark mode toggle button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="切换深色模式" title="切换深色/浅色模式">🌓</button>
+
+    <script>
+        (function () {
+            const html = document.documentElement;
+            const toggle = document.getElementById('themeToggle');
+
+            // On load, check saved preference or system
+            const saved = localStorage.getItem('theme');
+            if (saved === 'dark') {
+                html.setAttribute('data-theme', 'dark');
+            } else if (saved === 'light') {
+                html.removeAttribute('data-theme');
+            }
+            // else: rely on prefers-color-scheme media query (no data-theme attr)
+
+            // Toggle on click
+            toggle.addEventListener('click', function () {
+                const current = html.getAttribute('data-theme');
+                if (current === 'dark') {
+                    html.removeAttribute('data-theme');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    html.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
