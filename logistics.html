@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>物流方案对比 · 跨境电商从零开始</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --card: #f8f9fa;
+    --text: #1a1a2e;
+    --text-secondary: #555770;
+    --accent: #2563eb;
+    --border: #e2e4e9;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-hover: 0 4px 16px rgba(0,0,0,0.12);
+    --radius: 10px;
+    --highlight-bg: #eff6ff;
+    --highlight-border: #93c5fd;
+    --tag-bg: #e8f0fe;
+    --tag-text: #1e40af;
+    --cost-low: #16a34a;
+    --cost-mid: #ca8a04;
+    --cost-high: #dc2626;
+  }
+
+  [data-theme="dark"] {
+    --bg: #0f1117;
+    --card: #1a1d27;
+    --text: #e4e6ef;
+    --text-secondary: #9ca3af;
+    --accent: #60a5fa;
+    --border: #2e3140;
+    --shadow: 0 1px 3px rgba(0,0,0,0.4);
+    --shadow-hover: 0 4px 16px rgba(0,0,0,0.6);
+    --highlight-bg: #1e293b;
+    --highlight-border: #3b82f6;
+    --tag-bg: #1e3a5f;
+    --tag-text: #93c5fd;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 24px 60px;
+  }
+
+  /* Back link */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 15px;
+    margin-bottom: 20px;
+    transition: opacity 0.2s;
+  }
+  .back-link:hover { opacity: 0.75; }
+
+  /* Theme toggle */
+  .theme-toggle {
+    float: right;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 6px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--text);
+    background: var(--card);
+    transition: background 0.2s;
+  }
+  .theme-toggle:hover { background: var(--border); }
+
+  h1 {
+    font-size: 28px;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+
+  .subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 36px;
+    font-size: 15px;
+  }
+
+  h2 {
+    font-size: 21px;
+    margin: 40px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+  }
+
+  h3 {
+    font-size: 17px;
+    margin: 24px 0 12px;
+    color: var(--text);
+  }
+
+  p {
+    margin-bottom: 14px;
+    color: var(--text-secondary);
+  }
+
+  /* ---- Table ---- */
+  .table-wrapper {
+    overflow-x: auto;
+    margin: 16px 0 28px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+    font-size: 14px;
+  }
+
+  thead th {
+    background: var(--accent);
+    color: #fff;
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  thead th:first-child { border-radius: var(--radius) 0 0 0; }
+  thead th:last-child  { border-radius: 0 var(--radius) 0 0; }
+
+  tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    background: var(--card);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: var(--highlight-bg); }
+
+  .mode-label {
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  .cost { font-weight: 600; }
+  .cost.low  { color: var(--cost-low); }
+  .cost.mid  { color: var(--cost-mid); }
+  .cost.high { color: var(--cost-high); }
+
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 2px 3px 2px 0;
+    white-space: nowrap;
+  }
+
+  /* ---- Cards ---- */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 26px;
+    margin: 16px 0 24px;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.25s;
+  }
+  .card:hover { box-shadow: var(--shadow-hover); }
+
+  .card h3 { margin-top: 0; }
+
+  .card ul, .card ol {
+    padding-left: 22px;
+    margin: 8px 0;
+    color: var(--text-secondary);
+  }
+  .card li { margin-bottom: 6px; }
+
+  /* Highlight box */
+  .highlight-box {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--highlight-border);
+    border-radius: var(--radius);
+    padding: 20px 26px;
+    margin: 28px 0;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  .highlight-box strong {
+    color: var(--accent);
+  }
+
+  /* Steps */
+  .steps {
+    list-style: none;
+    padding: 0;
+    counter-reset: step;
+  }
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding: 12px 0 12px 44px;
+    margin-bottom: 4px;
+    color: var(--text-secondary);
+  }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .steps li:not(:last-child)::after {
+    content: "↓";
+    position: absolute;
+    left: 12px;
+    top: 40px;
+    font-size: 14px;
+    color: var(--accent);
+  }
+
+  /* Gray text */
+  .gray { color: var(--text-secondary); font-size: 14px; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container { padding: 14px 16px 40px; }
+    h1  { font-size: 22px; }
+    h2  { font-size: 18px; }
+    table { font-size: 13px; }
+    .card { padding: 16px 18px; }
+    .steps li { padding-left: 38px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <a class="back-link" href="index.html">← 返回首页</a>
+  <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙 暗色模式</button>
+
+  <h1>物流方案对比</h1>
+  <p class="subtitle">跨境电商物流方案对比 — 选对物流，成本减半</p>
+
+  <!-- ===== 四种物流模式对比表 ===== -->
+  <h2>四种物流模式对比表</h2>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>物流模式</th>
+          <th>时效</th>
+          <th>单件成本</th>
+          <th>优点</th>
+          <th>缺点</th>
+          <th>适合场景</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mode-label">小包直邮</td>
+          <td>7-25天</td>
+          <td class="cost high">¥65-125</td>
+          <td>零库存压力</td>
+          <td>无Prime流量、退货损失大</td>
+          <td>测款、轻小件</td>
+        </tr>
+        <tr>
+          <td class="mode-label">亚马逊FBA</td>
+          <td>3-5天(Prime)</td>
+          <td class="cost low">¥35-55</td>
+          <td>Prime标识、高转化</td>
+          <td>仓储费、库容限制</td>
+          <td>爆款、亚马逊深耕</td>
+        </tr>
+        <tr>
+          <td class="mode-label">第三方海外仓</td>
+          <td>1-5天</td>
+          <td class="cost low">¥30-48</td>
+          <td>成本最低、多平台共用</td>
+          <td>需提前备货</td>
+          <td>多平台运营、中大件</td>
+        </tr>
+        <tr>
+          <td class="mode-label">全托管(平台)</td>
+          <td>3-10天</td>
+          <td class="cost mid">平台定价</td>
+          <td>零运营负担</td>
+          <td>利润极薄</td>
+          <td>Temu/SHEIN卖家</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===== 2025-2026重大变化 ===== -->
+  <h2>2025-2026 重大变化</h2>
+  <div class="card">
+    <ul>
+      <li><strong>美国T86免税清关通道关闭</strong></li>
+      <li><strong>欧盟取消150欧元以下小包免税</strong></li>
+      <li><strong>小包直邮"免税红利"彻底终结</strong></li>
+      <li>海外仓+FBA成为主流选择</li>
+    </ul>
+  </div>
+
+  <!-- ===== 不同商品的最优方案 ===== -->
+  <h2>不同商品的最优方案</h2>
+
+  <div class="card">
+    <h3>轻小件低客单价 (&lt; $20)</h3>
+    <p>测款用小包直邮，起量后转海外仓/FBA，成本降 <strong>20-35%</strong></p>
+  </div>
+
+  <div class="card">
+    <h3>中大件高客单价 (&gt; $50)</h3>
+    <p>海运拼柜+海外仓最划算，比直邮省 <strong>40-60%</strong></p>
+  </div>
+
+  <div class="card">
+    <h3>季节性 / 时尚品类</h3>
+    <p>爆款提前备货海外仓，非爆款走专线</p>
+  </div>
+
+  <!-- ===== 隐形成本对比 ===== -->
+  <h2>三种模式隐形成本对比</h2>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>隐形成本</th>
+          <th>小包直邮</th>
+          <th>FBA</th>
+          <th>第三方海外仓</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mode-label">退货损失</td>
+          <td><span class="tag">极高</span> 退回国际运费 &gt; 货值</td>
+          <td><span class="tag" style="background:#dcfce7;color:#166534;">低</span> 亚马逊处理</td>
+          <td><span class="tag" style="background:#dcfce7;color:#166534;">低</span> 本地退回</td>
+        </tr>
+        <tr>
+          <td class="mode-label">资金占用</td>
+          <td>零备货</td>
+          <td><span class="tag">高</span> 需批量备货</td>
+          <td><span class="tag" style="background:#fef9c3;color:#854d0e;">中</span> 有免租期</td>
+        </tr>
+        <tr>
+          <td class="mode-label">流量 / 转化</td>
+          <td>无Prime标识</td>
+          <td>有Prime标识，转化率高</td>
+          <td>无平台流量加持</td>
+        </tr>
+        <tr>
+          <td class="mode-label">清关风险</td>
+          <td><span class="tag">高</span> 查验率17%+</td>
+          <td><span class="tag" style="background:#dcfce7;color:#166534;">低</span></td>
+          <td><span class="tag" style="background:#dcfce7;color:#166534;">低</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===== 混合模式推荐 ===== -->
+  <h2>混合模式推荐</h2>
+  <div class="card">
+    <ol class="steps">
+      <li><strong>测款新品</strong> → 小包直邮 / 专线空运（零风险验证）</li>
+      <li><strong>起量爆款</strong> → FBA（蹭Prime流量 + 平台权重）</li>
+      <li><strong>多平台订单</strong> → 第三方海外仓一件代发（库存复用）</li>
+      <li><strong>FBA库容紧张</strong> → 海外仓中转分批补仓</li>
+      <li><strong>FBA退货</strong> → 海外仓换标翻新，重新入仓</li>
+    </ol>
+  </div>
+
+  <!-- ===== Highlight box ===== -->
+  <div class="highlight-box">
+    <strong>新手建议：</strong>测款用小包直邮（零风险验证）→ 起量后转FBA/海外仓（降本提效）。2026年不再是"选哪个最便宜"，而是根据<strong>商品属性、客单价、周转率</strong>动态组合。
+  </div>
+
+</div>
+
+<script>
+  (function() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+
+  function toggleTheme() {
+    const root = document.documentElement;
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      root.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+      document.getElementById('themeBtn').textContent = '🌙 暗色模式';
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      document.getElementById('themeBtn').textContent = '☀️ 亮色模式';
+    }
+  }
+</script>
+
+</body>
+</html>
